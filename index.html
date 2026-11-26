@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BioLoom | Learning from scientific articles</title>
+<meta name="description" content="BioLoom learns biomedical image–text representations from the structure of scientific articles.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="stylesheet" href="style.css?v=end-hold">
+<script src="demo-data.js?v=search-7" defer></script>
+<script src="site.js?v=end-hold" defer></script>
+<script src="classification-demo.js?v=classification-demo-8" defer></script>
+<script src="experiments.js?v=paper-links-1" defer></script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#top" aria-label="BioLoom home"><picture><source media="(prefers-reduced-motion: reduce)" srcset="assets/logo.png"><img src="assets/logo-animated.gif" alt="" width="46" height="46"></picture>BioLoom</a>
+  <nav aria-label="Page sections"><a href="#method">Method</a><a href="#datasets">Datasets</a><a href="#results">Results</a><a href="#demos">Demos</a><a href="#citation">Citation</a></nav>
+</header>
+<main id="top">
+<section class="hero" aria-labelledby="title">
+  <picture><source media="(prefers-reduced-motion: reduce)" srcset="assets/logo.png"><img class="hero-logo" src="assets/logo-animated.gif" alt="" width="96" height="96"></picture>
+  <h1 id="title">BioLoom: Scaling Biomedical Vision-Language Models by Learning from the Structure of Scientific Articles</h1>
+  <p class="authors">
+<a href="https://scholar.google.com/citations?user=qyGKp0AAAAAJ">Yuwei Yang</a><sup>1</sup>, <a href="https://xiaoxiaosun.com/">Xiaoxiao Sun</a><sup>2</sup>, <a href="https://alejandro-lozano-dev.github.io/alejandro/">Alejandro Lozano</a><sup>2</sup>, <a href="https://www.ysting.space/">Yuan-Sen Ting</a><sup>4</sup><br>
+<a href="https://scholar.google.com/citations?user=PzyvzksAAAAJ">Yuhui Yuan</a><sup>5</sup>, <a href="https://zheng-lab-anu.github.io/">Liang Zheng</a><sup>1,3</sup>, <a href="https://ai.stanford.edu/~syyeung/">Serena Yeung-Levy</a><sup>2</sup></p>
+  <p class="affiliations"><sup>1</sup> Australian National University (ANU) &nbsp;·&nbsp; <sup>2</sup> Stanford University<br>
+<sup>3</sup> The University of Sydney &nbsp;·&nbsp; <sup>4</sup> The Ohio State University &nbsp;·&nbsp; <sup>5</sup> Canva</p>
+  <div class="actions">
+    <div class="action-row" role="group" aria-label="Project links">
+      <a class="button" href="https://github.com/yuweiyang-anu/BioLoom"><span class="action-icon" aria-hidden="true">⌘</span>Code</a>
+      <a class="button arxiv-status" href="https://arxiv.org/abs/2611.33151"><span class="action-icon" aria-hidden="true">↗</span>arXiv</a>
+      <a class="button" href="https://huggingface.co/BioLoom"><span class="action-icon" aria-hidden="true">🤗</span>Hugging Face</a>
+      <a class="button" href="#video"><span class="action-icon" aria-hidden="true">▶</span>Video</a>
+      <a class="button hero-demo" href="#demos"><span class="action-icon" aria-hidden="true">✦</span> Explore demos</a>
+    </div>
+    <div class="action-row" role="group" aria-label="Research resources">
+      <a class="button" href="https://huggingface.co/ChartFoundation/BioLoom-models"><span class="action-icon" aria-hidden="true">⬡</span>Models <span class="action-dot" aria-hidden="true">·</span> BioLoom</a>
+      <a class="button" href="https://huggingface.co/datasets/ChartFoundation/Loom52M"><span class="action-icon" aria-hidden="true">▤</span>Datasets <span class="action-dot" aria-hidden="true">·</span> Loom52M</a>
+      <a class="button" href="https://huggingface.co/datasets/ChartFoundation/BioLoom-EvalSuite"><span class="action-icon" aria-hidden="true">◉</span>Evaluation Benchmark</a>
+    </div>
+  </div>
+</section>
+
+<div id="video" class="project-overview">
+  <video controls playsinline preload="none" width="2560" height="1440" poster="assets/bioloom-overview.jpg?v=2k-example" aria-label="BioLoom project overview, 54 seconds">
+    <source src="assets/bioloom-overview.mp4?v=caption-wording" type="video/mp4">
+    <a href="assets/bioloom-overview.mp4?v=caption-wording">Watch the BioLoom overview</a>
+  </video>
+  <button class="overview-play" type="button" aria-label="Play BioLoom video" hidden>
+    <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.8a1 1 0 0 1 1.5-.86l12 7.2a1 1 0 0 1 0 1.72l-12 7.2A1 1 0 0 1 7 19.2z" fill="currentColor"/></svg>
+  </button>
+</div>
+
+<div class="section demo-section" id="demos">
+  <div class="demo-switcher" role="tablist" aria-label="Interactive demos">
+    <button type="button" role="tab" aria-selected="true" aria-controls="retrieval-demo" data-demo-tab="retrieval-demo"><span>01</span> Retrieval</button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="classification-demo" data-demo-tab="classification-demo"><span>02</span> Zero-shot classification</button>
+  </div>
+  <section class="retrieval-demo" id="retrieval-demo" aria-labelledby="retrieval-title" data-demo-panel>
+    <div class="search-header">
+      <div><h3 id="retrieval-title">Find the figure</h3><p data-search-scope></p></div>
+      <button class="play-button" type="button" data-search-play disabled>Loading…</button>
+    </div>
+    <div class="search-controls">
+      <label>Dataset<select id="search-dataset"></select></label>
+      <label data-search-caption-field hidden>Caption<select id="search-caption">
+        <option value="short">Concise caption</option>
+        <option value="long">Original caption</option>
+      </select></label>
+      <label class="search-example">Example<select id="search-case"></select></label>
+    </div>
+    <div class="search-query">
+      <span>Query</span>
+      <p data-search-query></p>
+      <button class="search-expand" type="button" data-search-expand aria-expanded="false" hidden>Full caption</button>
+    </div>
+    <div class="search-stage" data-phase="ready">
+      <div class="search-gallery">
+        <div class="search-strip"><strong>Demo gallery</strong><span>1,000 figures</span></div>
+        <div class="search-gallery-window"><div class="search-grid" tabindex="0" role="region" aria-label="1,000 figure thumbnails"></div></div>
+      </div>
+      <div class="search-result">
+        <div class="search-strip"><strong data-search-model>Rank 1</strong><span data-search-step></span></div>
+        <div class="search-result-frame">
+          <p class="search-feedback" data-search-feedback>Loading the retrieval demo…</p>
+          <img data-search-image alt="" hidden>
+          <span class="search-orbit" aria-hidden="true"></span>
+          <span class="search-verdict" data-search-verdict hidden></span>
+        </div>
+      </div>
+    </div>
+    <div class="search-footer">
+      <div class="search-models" aria-label="Choose a model" role="group"></div>
+      <a class="search-source" data-search-source rel="noopener" target="_blank" hidden>Source figure ↗</a>
+    </div>
+    <span class="sr-only" role="status" data-search-status></span>
+  </section>
+
+  <section class="classification-demo" id="classification-demo" aria-labelledby="classification-demo-title" data-demo-panel hidden>
+    <div class="classification-demo-header">
+      <div>
+        <p class="classification-kicker">ZERO-SHOT CLASSIFICATION</p>
+        <h3 id="classification-demo-title">Biomedical image recognition</h3>
+        <p>Select a domain and test case to replay predictions from BioLoom and five baselines.</p>
+      </div>
+      <div class="classification-actions">
+        <button class="play-button classification-replay" type="button" data-classification-replay>Replay inference</button>
+        <button class="play-button classification-next" type="button" data-classification-next>Next case</button>
+      </div>
+    </div>
+    <div class="classification-domain-strip" role="tablist" aria-label="Choose a biomedical domain" data-classification-domains></div>
+    <div class="classification-inference" aria-hidden="true">
+      <div class="classification-inference-head">
+        <span><i></i> LIVE INFERENCE</span>
+        <strong data-classification-phase>Encoding biomedical image</strong>
+      </div>
+      <div class="classification-inference-track">
+        <div class="classification-process-step process-image">
+          <div class="process-patch-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <span>Image patches</span>
+        </div>
+        <b class="classification-process-link"><i></i><i></i><i></i></b>
+        <div class="classification-process-step process-vision">
+          <div class="process-orbit"><i></i><i></i><i></i></div>
+          <span>Vision encoder</span>
+        </div>
+        <b class="classification-process-link"><i></i><i></i><i></i></b>
+        <div class="classification-process-step process-prompts">
+          <div><i>class A</i><i>class B</i><i>class C</i></div>
+          <span>Text prompts</span>
+        </div>
+        <b class="classification-process-link"><i></i><i></i><i></i></b>
+        <div class="classification-process-step process-similarity">
+          <div><i></i><i></i><i></i></div>
+          <span>Cosine similarity</span>
+        </div>
+        <b class="classification-process-link"><i></i><i></i><i></i></b>
+        <div class="classification-process-step process-result">
+          <div>✓</div>
+          <span>Ranked prediction</span>
+        </div>
+      </div>
+    </div>
+    <div class="classification-stage">
+      <article class="classification-input-card">
+        <div class="classification-case-meta">
+          <span data-classification-domain></span>
+          <strong data-classification-dataset></strong>
+        </div>
+        <div class="classification-image-frame">
+          <img data-classification-image alt="" width="720" height="520">
+          <div class="classification-image-pool" data-classification-image-pool></div>
+          <span class="classification-input-tag">INPUT IMAGE</span>
+          <span class="classification-resolution" data-classification-resolution></span>
+        </div>
+        <div class="classification-ground-truth">
+          <span>Ground truth</span>
+          <strong data-classification-truth></strong>
+        </div>
+      </article>
+      <div class="classification-flow-arrow" aria-hidden="true"><span>→</span><small>text prompts</small></div>
+      <article class="classification-output-card">
+        <div class="classification-output-head">
+          <div><span>ZERO-SHOT OUTPUTS</span><strong data-classification-count></strong></div>
+          <p><i></i> Correct <i></i> Error</p>
+        </div>
+        <div class="classification-predictions" data-classification-predictions></div>
+      </article>
+    </div>
+    <div class="classification-case-strip" role="tablist" aria-label="Choose a zero-shot classification example" data-classification-cases></div>
+    <div class="classification-demo-footer">
+      <span>Image → class prompts → highest-similarity label</span>
+      <small>Real test images and model outputs under the fixed two-prompt zero-shot protocol used in the paper. No classifier is fitted.</small>
+    </div>
+    <span class="sr-only" role="status" data-classification-status></span>
+  </section>
+</div>
+
+<section class="section paper-abstract" id="paper" aria-labelledby="abstract-title">
+  <h2 id="abstract-title">Paper abstract</h2>
+  <p>The development of biomedical vision-language models (VLMs) with contrastive image-text pretraining has been driven by scaling to increasingly large and diverse image-text datasets. Beyond scaling, further progress can come from learning richer representations from existing data. We hypothesize that the structure of scientific literature itself provides an additional source of supervision: figures, panels, captions, and accompanying article text encode rich relationships across modalities. Yet, treating these as independent image-text pairs overlooks their relationships. To address this limitation, we incorporate these structural relationships into contrastive image-text supervision. We preserve exact image-text matches while introducing weaker positive supervision for related pairs, such as a panel and the caption of a sibling panel. We upweight cross-article negatives of the same content type to encourage finer discrimination. We also enrich panel descriptions using visual content, original figure captions, and mentioning paragraphs. Pairing panels with these descriptions and whole figures with their original captions yields <strong>Loom52M</strong>, a dataset of 52.4 million image-text pairs spanning scientific charts and biomedical images. Using Loom52M, <strong>BioLoom</strong> (DFN-2B) achieves 56.82% domain-balanced mean accuracy across 67 zero-shot classification tasks from 43 datasets in 10 domains, compared with 48.77% for MedPMC-CLIP. On BioLoomBench with concise captions and BioMedFlickr, it achieves bidirectional mean Recall@1 of 63.20% and 10.59%, versus 46.37% and 7.55% for the respective strongest evaluated baselines, BiomedCLIP and MedPMC-CLIP.</p>
+</section>
+
+<section class="section method" id="method">
+  <div class="section-heading">
+    <h2>From figure to panel pairs</h2>
+    <p>The micrograph matches its own caption. The sibling chart provides a weaker positive by adding complementary evidence about the same experiment.</p>
+  </div>
+  <div class="method-player" data-step="figure" aria-label="Animated example of image–text relationships">
+    <div class="player-controls">
+      <div class="step-buttons" role="group" aria-label="Animation stages">
+        <button type="button" data-step-button="figure" aria-pressed="true">Whole figures</button>
+        <button type="button" data-step-button="selected" aria-pressed="false">Source figure</button>
+        <button type="button" data-step-button="exact" aria-pressed="false">Exact pair</button>
+        <button type="button" data-step-button="related" aria-pressed="false">Sibling pair</button>
+        <button type="button" data-step-button="learning" aria-pressed="false" aria-controls="learning-summary">Learning across relations</button>
+      </div>
+      <button type="button" class="play-button" data-play aria-pressed="false">Play animation</button>
+    </div>
+    <div class="player-stage">
+      <svg class="method-connections" aria-hidden="true" focusable="false">
+        <path class="link-exact" pathLength="1"/>
+        <path class="link-related" pathLength="1"/>
+        <path class="link-context" pathLength="1"/>
+        <path class="link-context-arrow"/>
+        <text class="link-context-label" text-anchor="middle">Complementary evidence · Text to image</text>
+      </svg>
+      <div class="figure-gallery" role="group" aria-label="Whole figure gallery">
+        <h3>Whole figures <span class="figure-gallery-count"></span></h3>
+        <div class="figure-gallery-grid">
+          <button type="button" aria-label="Show the tube formation example" aria-pressed="false" data-figure="example"><img src="assets/tube-formation-figure.webp" alt="Tube formation figure with nine panels"></button>
+        </div>
+      </div>
+      <div class="figure-context" hidden>
+        <figure class="source-figure">
+          <figcaption>Example figure</figcaption>
+          <div class="source-image">
+            <img src="assets/tube-formation-figure.webp" width="265" height="351" alt="Original scientific figure with panels a through i.">
+            <button type="button" class="source-frame frame-chart" data-crop-step="related" aria-label="Panel h, sibling chart"></button>
+            <button type="button" class="source-frame frame-micro" data-crop-step="exact" aria-label="Panel i, anchor microscopy"></button>
+          </div>
+        </figure>
+        <aside class="experiment-context" aria-label="Shared experimental background">
+          <h4>Shared experimental conditions</h4>
+          <p>Control cells and cells with VEGFR1 or VEGFR2 knockdown, at 2.5% and 5% FBS.</p>
+          <a class="source-caption" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2822115/#F4" target="_blank" rel="noopener">Read the full original caption · Zhang et al., Fig. 4 ↗</a>
+        </aside>
+      </div>
+      <div class="paired-panels" aria-label="Two panels and their complementary descriptions" hidden>
+        <figure class="panel-card microscopy">
+          <figcaption><span class="panel-letter">i</span> Anchor microscopy</figcaption>
+          <div class="panel-text">
+            <span class="caption-role">Exact match for panel i</span>
+            <p>Representative 40× micrographs show endothelial tube formation after 24 hours on growth-factor-reduced Matrigel.</p>
+          </div>
+          <img class="panel-image micro-image" src="assets/tube-formation-microscopy.webp" width="173" height="107" alt="Microscopy of control, VEGFR1 and VEGFR2 knockdown groups at two FBS concentrations">
+        </figure>
+        <figure class="panel-card chart">
+          <figcaption><span class="panel-letter">h</span> Sibling chart</figcaption>
+          <div class="panel-text">
+            <span class="caption-role">Sibling caption</span>
+            <p>Reports <mark><strong>capillary branch counts</strong></mark> for each experimental group, adding a quantitative measure of the tube formation shown in panel i.</p>
+          </div>
+          <img class="panel-image chart-image" src="assets/tube-formation-chart.webp" width="82" height="109" alt="Bar chart comparing capillary branch counts across the same experimental groups">
+        </figure>
+      </div>
+      <span class="stage-announcement" role="status"></span>
+    </div>
+    <section class="learning-summary" id="learning-summary" aria-labelledby="learning-summary-title" hidden>
+      <h3 id="learning-summary-title">Learning across relations</h3>
+      <p>BioLoom aligns exact image–text pairs and learns from sibling captions as weaker positives.</p>
+      <p>It masks cross-figure pairs from the same article and upweights same-content-type negatives from different articles in the relation loss.</p>
+    </section>
+  </div>
+  <section class="method-overview" aria-labelledby="method-overview-title">
+    <h3 id="method-overview-title">Method overview</h3>
+    <figure class="full-figure">
+      <a href="assets/paper-method-hd.webp" aria-label="Open full-resolution method figure"><img src="assets/paper-method-hd.webp" width="4000" height="1503" loading="lazy" alt="BioLoom paper method figure showing image–text pair labeling and the two contrastive loss matrices"></a>
+    </figure>
+    <div class="method-points">
+      <article><h4>Enrich panel captions</h4><p>Describe each panel using its visual content, the original figure caption, and the article text that mentions it.</p></article>
+      <article><h4>Learn from sibling panels</h4><p>Give exact image–text pairs full alignment weight and sibling panel captions weaker positive weight.</p></article>
+      <article><h4>Mask related pairs</h4><p>The main loss excludes sibling panel pairs and same-article cross-figure pairs from its negative set. Upweight same-content-type negatives from different articles.</p></article>
+    </div>
+    <section class="method-objective" id="training-objective" aria-labelledby="objective-title">
+      <h4 id="objective-title">Structure-aware contrastive loss</h4>
+      <div class="objective-total">
+        <math display="block" aria-label="Total loss equals masked contrastive loss plus lambda times relation loss.">
+          <mi>ℒ</mi><mo>=</mo><msub><mi>ℒ</mi><mtext>mask</mtext></msub><mo>+</mo><mi>λ</mi><msub><mi>ℒ</mi><mtext>rel</mtext></msub>
+        </math>
+        <p>Both terms average image-to-text and text-to-image losses. The relation loss averages over anchors with at least one semi-positive candidate.</p>
+      </div>
+      <div class="objective-terms">
+        <article>
+          <h5>Exact-pair alignment</h5>
+          <math display="block" aria-label="Per-anchor image-to-text masked loss. Negative log of the exact-pair exponentiated score divided by the sum over exact and cross-article candidates.">
+            <msubsup><mi>ℓ</mi><mrow><mi>i</mi><mo>,</mo><mtext>mask</mtext></mrow><mtext>I2T</mtext></msubsup>
+            <mo>=</mo><mo>−</mo><mi>log</mi>
+            <mfrac>
+              <mrow><mi>exp</mi><mo>(</mo><msub><mi>s</mi><mi>ii</mi></msub><mo>)</mo></mrow>
+              <mrow>
+                <munder><mo>∑</mo><mrow><mi>j</mi><mo>∈</mo><msub><mi>ℰ</mi><mi>i</mi></msub><mo>∪</mo><msub><mi>𝒩</mi><mi>i</mi></msub></mrow></munder>
+                <mi>exp</mi><mo>(</mo><msub><mi>s</mi><mi>ij</mi></msub><mo>)</mo>
+              </mrow>
+            </mfrac>
+          </math>
+          <p>The denominator uses exact and cross-article pairs. It masks semi-positive and same-article cross-figure pairs.</p>
+        </article>
+        <article>
+          <h5>Semi-positive alignment</h5>
+          <math display="block" aria-label="Per-anchor image-to-text relation loss. Negative log of the exponentiated scores summed over semi-positive candidates divided by the weighted sum over semi-positive and cross-article candidates.">
+            <msubsup><mi>ℓ</mi><mrow><mi>i</mi><mo>,</mo><mtext>rel</mtext></mrow><mtext>I2T</mtext></msubsup>
+            <mo>=</mo><mo>−</mo><mi>log</mi>
+            <mfrac>
+              <mrow>
+                <munder><mo>∑</mo><mrow><mi>j</mi><mo>∈</mo><msub><mi>𝒫</mi><mi>i</mi></msub></mrow></munder>
+                <mi>exp</mi><mo>(</mo><msub><mi>s</mi><mi>ij</mi></msub><mo>)</mo>
+              </mrow>
+              <mrow>
+                <munder><mo>∑</mo><mrow><mi>j</mi><mo>∈</mo><msub><mi>𝒫</mi><mi>i</mi></msub><mo>∪</mo><msub><mi>𝒩</mi><mi>i</mi></msub></mrow></munder>
+                <msub><mi>w</mi><mi>ij</mi></msub><mi>exp</mi><mo>(</mo><msub><mi>s</mi><mi>ij</mi></msub><mo>)</mo>
+              </mrow>
+            </mfrac>
+          </math>
+          <p>Semi-positive pairs supply the positive signal. The denominator upweights cross-article negatives of the same content type.</p>
+        </article>
+      </div>
+      <dl class="objective-symbols" aria-label="Loss symbols">
+        <div><dt><math><msub><mi>ℰ</mi><mi>i</mi></msub></math></dt><dd>Exact matches for anchor <i>i</i>.</dd></div>
+        <div><dt><math><msub><mi>𝒫</mi><mi>i</mi></msub></math></dt><dd>Non-exact pairs from the same figure.</dd></div>
+        <div><dt><math><msub><mi>𝒜</mi><mi>i</mi></msub></math></dt><dd>Pairs from different figures in the same article.</dd></div>
+        <div><dt><math><msub><mi>𝒩</mi><mi>i</mi></msub></math></dt><dd>Pairs from different articles.</dd></div>
+        <div>
+          <dt><math><msub><mi>s</mi><mi>ij</mi></msub><mo>=</mo><msubsup><mi>v</mi><mi>i</mi><mo>⊤</mo></msubsup><msub><mi>t</mi><mi>j</mi></msub><mo>/</mo><mi>τ</mi></math></dt>
+          <dd>Similarity between normalized image and text embeddings. <i>j</i> indexes a candidate and <i>τ</i> is the temperature.</dd>
+        </div>
+        <div><dt><math><mi>λ</mi></math></dt><dd>Scales the relation loss in the total objective.</dd></div>
+        <div>
+          <dt><math><msub><mi>w</mi><mi>ij</mi></msub></math></dt>
+          <dd>Uses <i>α</i> to upweight same-content-type cross-article negatives. Other included pairs retain their original contribution.</dd>
+        </div>
+      </dl>
+    </section>
+  </section>
+</section>
+
+<section class="section datasets" id="datasets">
+  <div class="section-heading"><h2>Our Datasets &amp; Benchmark</h2></div>
+  <div class="dataset-grid">
+    <div class="dataset-copy">
+      <div class="dataset-item">
+        <h3>Loom52M</h3>
+        <p class="dataset-count"><span class="sr-only">52.4 million</span><span class="dataset-count-value" data-count="52.4" aria-hidden="true">52.4</span><span aria-hidden="true">M</span></p>
+        <p>Whole-figure and panel image–text pairs for training, built from scientific articles in BIOMEDICA.</p>
+        <a class="button" href="https://huggingface.co/datasets/ChartFoundation/Loom52M">Browse Loom52M</a>
+      </div>
+      <div class="dataset-item">
+        <h3>BioLoomBench</h3>
+        <p class="dataset-count"><span class="sr-only">15,000</span><span class="dataset-count-value" data-count="15000" aria-hidden="true">15,000</span></p>
+        <p>Retrieval figures from 15 biomedical domains, each paired with concise and original captions.</p>
+        <a class="button" href="https://huggingface.co/datasets/ChartFoundation/BioLoom-EvalSuite/tree/main/bioloom-retrieval">Browse BioLoomBench</a>
+      </div>
+    </div>
+    <figure class="dataset-figure">
+      <img src="assets/paper-benchmark.png" width="1000" height="808" loading="lazy" alt="BioLoomBench figure counts by content, layout, and publication source, with 1,000 figures in each of 15 domains">
+      <figcaption>BioLoomBench composition by visual content, figure layout, and source.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section results" id="results">
+  <div class="section-heading"><h2>Results</h2><p>BioLoom (DFN-2B) and MedPMC-CLIP under the evaluation protocols used in the paper.</p></div>
+  <div class="metrics">
+    <div class="metrics-legend"><span><i></i>BioLoom (DFN-2B)</span><span><i></i>MedPMC-CLIP</span></div>
+    <div class="metric-card">
+      <div><h3>Zero-shot classification</h3><p>Domain-balanced accuracy · 67 tasks</p></div>
+      <div class="metric-bars" aria-label="BioLoom 56.82 percent, MedPMC-CLIP 48.77 percent">
+        <div class="metric-track" style="--score:56.82%"><i></i><strong>56.82%</strong></div>
+        <div class="metric-track baseline" style="--score:48.77%"><i></i><span>48.77%</span></div>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div><h3>BioLoomBench</h3><p>Mean bidirectional R@1 · concise captions</p></div>
+      <div class="metric-bars" aria-label="BioLoom 63.20 percent, MedPMC-CLIP 39.05 percent">
+        <div class="metric-track" style="--score:63.20%"><i></i><strong>63.20%</strong></div>
+        <div class="metric-track baseline" style="--score:39.05%"><i></i><span>39.05%</span></div>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div><h3>BioMedFlickr</h3><p>Mean bidirectional R@1 · same-caption relevance</p></div>
+      <div class="metric-bars" aria-label="BioLoom 10.59 percent, MedPMC-CLIP 7.55 percent">
+        <div class="metric-track" style="--score:10.59%"><i></i><strong>10.59%</strong></div>
+        <div class="metric-track baseline" style="--score:7.55%"><i></i><span>7.55%</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="tables-nav" role="group" aria-label="Results table">
+    <button type="button" aria-controls="classification-results" aria-pressed="true">Zero-shot classification</button>
+    <button type="button" aria-controls="bioloom-results" aria-pressed="false">BioLoomBench</button>
+    <button type="button" aria-controls="flickr-results" aria-pressed="false">BioMedFlickr</button>
+  </div>
+  <p class="table-note"><sup>*</sup> denotes random vision-encoder initialization for image-text pretraining.</p>
+  <div class="main-tables"><div class="result-block" id="classification-results"><h3>Zero-shot classification</h3><p>Accuracy (%) over 67 tasks from 43 sources. Overall averages tasks within each source, then sources within each domain, and weights the ten domains equally.</p><table class="paper-results-table" aria-label="Zero-shot classification accuracy by domain">
+<thead><tr><th scope="col">Model</th><th scope="col">Params.</th><th scope="col">Cell</th><th scope="col">Struct.</th><th scope="col">Micro.</th><th scope="col">Cytology</th><th scope="col">Histo.</th><th scope="col">Radiol.</th><th scope="col">Ophth.</th><th scope="col">Derm.</th><th scope="col">Surgery</th><th scope="col">Microb.</th><th scope="col">Overall</th></tr></thead>
+<tbody>
+<tr><th scope="row">Random</th><td data-label="Params." align="right">-</td><td data-label="Cell" align="right">18.65</td><td data-label="Struct." align="right">17.78</td><td data-label="Micro." align="right">34.42</td><td data-label="Cytology" align="right">13.77</td><td data-label="Histo." align="right">28.96</td><td data-label="Radiol." align="right">38.18</td><td data-label="Ophth." align="right">29.67</td><td data-label="Derm." align="right">13.23</td><td data-label="Surgery" align="right">19.63</td><td data-label="Microb." align="right">29.23</td><td data-label="Overall" align="right">24.35</td></tr>
+<tr><th scope="row">CoCa<sup>*</sup></th><td data-label="Params." align="right">430M</td><td data-label="Cell" align="right">22.18</td><td data-label="Struct." align="right">33.45</td><td data-label="Micro." align="right">56.86</td><td data-label="Cytology" align="right">41.56</td><td data-label="Histo." align="right">39.80</td><td data-label="Radiol." align="right">36.31</td><td data-label="Ophth." align="right">50.53</td><td data-label="Derm." align="right">17.37</td><td data-label="Surgery" align="right">23.05</td><td data-label="Microb." align="right">31.48</td><td data-label="Overall" align="right">35.26</td></tr>
+<tr><th scope="row">OpenCLIP<sup>*</sup></th><td data-label="Params." align="right">428M</td><td data-label="Cell" align="right">24.49</td><td data-label="Struct." align="right">44.44</td><td data-label="Micro." align="right">59.04</td><td data-label="Cytology" align="right">10.25</td><td data-label="Histo." align="right">41.03</td><td data-label="Radiol." align="right">64.86</td><td data-label="Ophth." align="right">42.80</td><td data-label="Derm." align="right">15.67</td><td data-label="Surgery" align="right">31.26</td><td data-label="Microb." align="right">44.87</td><td data-label="Overall" align="right">37.87</td></tr>
+<tr><th scope="row">PMC-CLIP<sup>*</sup></th><td data-label="Params." align="right">137M</td><td data-label="Cell" align="right">28.16</td><td data-label="Struct." align="right">48.95</td><td data-label="Micro." align="right">69.20</td><td data-label="Cytology" align="right">15.16</td><td data-label="Histo." align="right">57.30</td><td data-label="Radiol." align="right">53.91</td><td data-label="Ophth." align="right">38.74</td><td data-label="Derm." align="right">16.34</td><td data-label="Surgery" align="right">29.09</td><td data-label="Microb." align="right">38.16</td><td data-label="Overall" align="right">39.50</td></tr>
+<tr><th scope="row">MedSigLIP</th><td data-label="Params." align="right">800M</td><td data-label="Cell" align="right">22.74</td><td data-label="Struct." align="right">44.77</td><td data-label="Micro." align="right">65.31</td><td data-label="Cytology" align="right">37.28</td><td data-label="Histo." align="right">38.77</td><td data-label="Radiol." align="right">49.26</td><td data-label="Ophth." align="right">49.24</td><td data-label="Derm." align="right">20.62</td><td data-label="Surgery" align="right">19.38</td><td data-label="Microb." align="right"><ins>58.58</ins></td><td data-label="Overall" align="right">40.59</td></tr>
+<tr><th scope="row">BiomedCLIP</th><td data-label="Params." align="right">196M</td><td data-label="Cell" align="right">24.11</td><td data-label="Struct." align="right">49.59</td><td data-label="Micro." align="right">74.55</td><td data-label="Cytology" align="right">11.16</td><td data-label="Histo." align="right">53.02</td><td data-label="Radiol." align="right">55.36</td><td data-label="Ophth." align="right">38.27</td><td data-label="Derm." align="right">30.48</td><td data-label="Surgery" align="right">41.83</td><td data-label="Microb." align="right">43.63</td><td data-label="Overall" align="right">42.20</td></tr>
+<tr><th scope="row">Panel2Patch</th><td data-label="Params." align="right">428M</td><td data-label="Cell" align="right">29.40</td><td data-label="Struct." align="right">47.12</td><td data-label="Micro." align="right">75.66</td><td data-label="Cytology" align="right">9.50</td><td data-label="Histo." align="right">52.30</td><td data-label="Radiol." align="right"><ins>63.31</ins></td><td data-label="Ophth." align="right">47.56</td><td data-label="Derm." align="right">43.76</td><td data-label="Surgery" align="right">37.34</td><td data-label="Microb." align="right">27.77</td><td data-label="Overall" align="right">43.37</td></tr>
+<tr><th scope="row">BMC-CLIP-CF</th><td data-label="Params." align="right">428M</td><td data-label="Cell" align="right">24.79</td><td data-label="Struct." align="right">56.53</td><td data-label="Micro." align="right">69.39</td><td data-label="Cytology" align="right">8.97</td><td data-label="Histo." align="right">51.34</td><td data-label="Radiol." align="right">60.85</td><td data-label="Ophth." align="right">46.38</td><td data-label="Derm." align="right">43.76</td><td data-label="Surgery" align="right">41.35</td><td data-label="Microb." align="right">32.25</td><td data-label="Overall" align="right">43.56</td></tr>
+<tr><th scope="row">BMC-LongCLIP</th><td data-label="Params." align="right">454M</td><td data-label="Cell" align="right">25.62</td><td data-label="Struct." align="right">51.49</td><td data-label="Micro." align="right">76.23</td><td data-label="Cytology" align="right">35.61</td><td data-label="Histo." align="right">53.94</td><td data-label="Radiol." align="right">60.73</td><td data-label="Ophth." align="right">35.53</td><td data-label="Derm." align="right">40.87</td><td data-label="Surgery" align="right">37.38</td><td data-label="Microb." align="right">28.62</td><td data-label="Overall" align="right">44.60</td></tr>
+<tr><th scope="row">MedPMC-CLIP</th><td data-label="Params." align="right">428M</td><td data-label="Cell" align="right">28.60</td><td data-label="Struct." align="right"><ins>57.60</ins></td><td data-label="Micro." align="right">66.17</td><td data-label="Cytology" align="right"><ins>38.18</ins></td><td data-label="Histo." align="right">59.49</td><td data-label="Radiol." align="right">55.57</td><td data-label="Ophth." align="right">51.40</td><td data-label="Derm." align="right"><ins>45.49</ins></td><td data-label="Surgery" align="right">35.11</td><td data-label="Microb." align="right">50.11</td><td data-label="Overall" align="right">48.77</td></tr>
+<tr class="our-model"><th scope="row"><strong>◆ BioLoom (Scratch)<sup>*</sup></strong></th><td data-label="Params." align="right">454M</td><td data-label="Cell" align="right"><strong>34.22</strong></td><td data-label="Struct." align="right">56.69</td><td data-label="Micro." align="right"><strong>79.70</strong></td><td data-label="Cytology" align="right">37.96</td><td data-label="Histo." align="right"><ins>61.81</ins></td><td data-label="Radiol." align="right"><strong>64.57</strong></td><td data-label="Ophth." align="right"><ins>56.65</ins></td><td data-label="Derm." align="right">38.75</td><td data-label="Surgery" align="right"><ins>52.65</ins></td><td data-label="Microb." align="right">45.90</td><td data-label="Overall" align="right"><ins>52.89</ins></td></tr>
+<tr class="our-model"><th scope="row"><strong>◆ BioLoom (DFN-2B)</strong></th><td data-label="Params." align="right">454M</td><td data-label="Cell" align="right"><ins>31.05</ins></td><td data-label="Struct." align="right"><strong>59.73</strong></td><td data-label="Micro." align="right"><ins>76.32</ins></td><td data-label="Cytology" align="right"><strong>45.61</strong></td><td data-label="Histo." align="right"><strong>62.55</strong></td><td data-label="Radiol." align="right">61.40</td><td data-label="Ophth." align="right"><strong>61.64</strong></td><td data-label="Derm." align="right"><strong>48.21</strong></td><td data-label="Surgery" align="right"><strong>57.62</strong></td><td data-label="Microb." align="right"><strong>64.09</strong></td><td data-label="Overall" align="right"><strong>56.82</strong></td></tr>
+</tbody>
+</table></div>
+
+<div class="result-block" id="bioloom-results"><h3>BioLoomBench retrieval</h3><p>Recall@1, 10 and 100 (%) for concise and original captions. I2T is image to text and T2I is text to image.</p><table class="paper-results-table bioloombench-table" aria-label="BioLoomBench retrieval">
+<thead>
+<tr><th scope="col" rowspan="3">Model</th><th scope="colgroup" colspan="6">Concise caption</th><th scope="colgroup" colspan="6">Original caption</th></tr>
+<tr><th scope="colgroup" colspan="3">I2T</th><th scope="colgroup" colspan="3">T2I</th><th scope="colgroup" colspan="3">I2T</th><th scope="colgroup" colspan="3">T2I</th></tr>
+<tr><th scope="col">R@1</th><th scope="col">R@10</th><th scope="col">R@100</th><th scope="col">R@1</th><th scope="col">R@10</th><th scope="col">R@100</th><th scope="col">R@1</th><th scope="col">R@10</th><th scope="col">R@100</th><th scope="col">R@1</th><th scope="col">R@10</th><th scope="col">R@100</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">CoCa<sup>*</sup></th><td data-label="Concise I2T R@1" align="right">24.25</td><td data-label="Concise I2T R@10" align="right">46.37</td><td data-label="Concise I2T R@100" align="right">74.44</td><td data-label="Concise T2I R@1" align="right">22.35</td><td data-label="Concise T2I R@10" align="right">42.85</td><td data-label="Concise T2I R@100" align="right">71.15</td><td data-label="Original I2T R@1" align="right">18.37</td><td data-label="Original I2T R@10" align="right">36.88</td><td data-label="Original I2T R@100" align="right">64.68</td><td data-label="Original T2I R@1" align="right">18.53</td><td data-label="Original T2I R@10" align="right">36.72</td><td data-label="Original T2I R@100" align="right">62.48</td></tr>
+<tr><th scope="row">OpenCLIP<sup>*</sup></th><td data-label="Concise I2T R@1" align="right">27.65</td><td data-label="Concise I2T R@10" align="right">50.47</td><td data-label="Concise I2T R@100" align="right">76.93</td><td data-label="Concise T2I R@1" align="right">25.69</td><td data-label="Concise T2I R@10" align="right">47.82</td><td data-label="Concise T2I R@100" align="right">75.24</td><td data-label="Original I2T R@1" align="right">25.34</td><td data-label="Original I2T R@10" align="right">47.37</td><td data-label="Original I2T R@100" align="right">73.49</td><td data-label="Original T2I R@1" align="right">24.68</td><td data-label="Original T2I R@10" align="right">45.66</td><td data-label="Original T2I R@100" align="right">71.75</td></tr>
+<tr><th scope="row">PMC-CLIP<sup>*</sup></th><td data-label="Concise I2T R@1" align="right">4.75</td><td data-label="Concise I2T R@10" align="right">14.76</td><td data-label="Concise I2T R@100" align="right">33.11</td><td data-label="Concise T2I R@1" align="right">4.84</td><td data-label="Concise T2I R@10" align="right">15.87</td><td data-label="Concise T2I R@100" align="right">35.96</td><td data-label="Original I2T R@1" align="right">4.47</td><td data-label="Original I2T R@10" align="right">13.69</td><td data-label="Original I2T R@100" align="right">30.34</td><td data-label="Original T2I R@1" align="right">6.05</td><td data-label="Original T2I R@10" align="right">18.04</td><td data-label="Original T2I R@100" align="right">37.51</td></tr>
+<tr><th scope="row">MedSigLIP</th><td data-label="Concise I2T R@1" align="right">27.39</td><td data-label="Concise I2T R@10" align="right">56.07</td><td data-label="Concise I2T R@100" align="right">82.69</td><td data-label="Concise T2I R@1" align="right">16.38</td><td data-label="Concise T2I R@10" align="right">38.63</td><td data-label="Concise T2I R@100" align="right">67.55</td><td data-label="Original I2T R@1" align="right">19.88</td><td data-label="Original I2T R@10" align="right">44.66</td><td data-label="Original I2T R@100" align="right">72.75</td><td data-label="Original T2I R@1" align="right">9.43</td><td data-label="Original T2I R@10" align="right">26.52</td><td data-label="Original T2I R@100" align="right">53.27</td></tr>
+<tr><th scope="row">MedPMC-CLIP</th><td data-label="Concise I2T R@1" align="right">41.27</td><td data-label="Concise I2T R@10" align="right">70.51</td><td data-label="Concise I2T R@100" align="right">89.33</td><td data-label="Concise T2I R@1" align="right">36.84</td><td data-label="Concise T2I R@10" align="right">63.63</td><td data-label="Concise T2I R@100" align="right">84.71</td><td data-label="Original I2T R@1" align="right">55.42</td><td data-label="Original I2T R@10" align="right">80.70</td><td data-label="Original I2T R@100" align="right">93.03</td><td data-label="Original T2I R@1" align="right">56.14</td><td data-label="Original T2I R@10" align="right">81.63</td><td data-label="Original T2I R@100" align="right">93.35</td></tr>
+<tr><th scope="row">Panel2Patch</th><td data-label="Concise I2T R@1" align="right">42.43</td><td data-label="Concise I2T R@10" align="right">71.55</td><td data-label="Concise I2T R@100" align="right">92.02</td><td data-label="Concise T2I R@1" align="right">36.96</td><td data-label="Concise T2I R@10" align="right">64.62</td><td data-label="Concise T2I R@100" align="right">87.45</td><td data-label="Original I2T R@1" align="right">47.75</td><td data-label="Original I2T R@10" align="right">74.83</td><td data-label="Original I2T R@100" align="right">91.61</td><td data-label="Original T2I R@1" align="right">49.57</td><td data-label="Original T2I R@10" align="right">77.01</td><td data-label="Original T2I R@100" align="right">92.84</td></tr>
+<tr><th scope="row">BMC-LongCLIP</th><td data-label="Concise I2T R@1" align="right">44.39</td><td data-label="Concise I2T R@10" align="right">78.15</td><td data-label="Concise I2T R@100" align="right">95.83</td><td data-label="Concise T2I R@1" align="right">35.47</td><td data-label="Concise T2I R@10" align="right">68.14</td><td data-label="Concise T2I R@100" align="right">90.77</td><td data-label="Original I2T R@1" align="right">67.35</td><td data-label="Original I2T R@10" align="right">87.45</td><td data-label="Original I2T R@100" align="right">95.83</td><td data-label="Original T2I R@1" align="right">67.17</td><td data-label="Original T2I R@10" align="right">87.65</td><td data-label="Original T2I R@100" align="right">95.90</td></tr>
+<tr><th scope="row">BMC-CLIP-CF</th><td data-label="Concise I2T R@1" align="right">47.11</td><td data-label="Concise I2T R@10" align="right">76.90</td><td data-label="Concise I2T R@100" align="right">94.85</td><td data-label="Concise T2I R@1" align="right">38.74</td><td data-label="Concise T2I R@10" align="right">66.15</td><td data-label="Concise T2I R@100" align="right">88.41</td><td data-label="Original I2T R@1" align="right">52.09</td><td data-label="Original I2T R@10" align="right">78.96</td><td data-label="Original I2T R@100" align="right">92.94</td><td data-label="Original T2I R@1" align="right">51.89</td><td data-label="Original T2I R@10" align="right">78.97</td><td data-label="Original T2I R@100" align="right">93.25</td></tr>
+<tr><th scope="row">BiomedCLIP</th><td data-label="Concise I2T R@1" align="right">51.65</td><td data-label="Concise I2T R@10" align="right">84.38</td><td data-label="Concise I2T R@100" align="right">97.67</td><td data-label="Concise T2I R@1" align="right">41.09</td><td data-label="Concise T2I R@10" align="right">75.63</td><td data-label="Concise T2I R@100" align="right">94.71</td><td data-label="Original I2T R@1" align="right">69.80</td><td data-label="Original I2T R@10" align="right">89.67</td><td data-label="Original I2T R@100" align="right">97.11</td><td data-label="Original T2I R@1" align="right">69.11</td><td data-label="Original T2I R@10" align="right">89.48</td><td data-label="Original T2I R@100" align="right">96.97</td></tr>
+<tr class="our-model"><th scope="row"><strong>◆ BioLoom (Scratch)<sup>*</sup></strong></th><td data-label="Concise I2T R@1" align="right"><ins>61.93</ins></td><td data-label="Concise I2T R@10" align="right"><ins>90.61</ins></td><td data-label="Concise I2T R@100" align="right"><ins>98.79</ins></td><td data-label="Concise T2I R@1" align="right"><ins>52.33</ins></td><td data-label="Concise T2I R@10" align="right"><ins>83.86</ins></td><td data-label="Concise T2I R@100" align="right"><ins>97.44</ins></td><td data-label="Original I2T R@1" align="right"><ins>75.91</ins></td><td data-label="Original I2T R@10" align="right"><ins>92.94</ins></td><td data-label="Original I2T R@100" align="right"><ins>98.09</ins></td><td data-label="Original T2I R@1" align="right"><ins>74.22</ins></td><td data-label="Original T2I R@10" align="right"><ins>91.52</ins></td><td data-label="Original T2I R@100" align="right"><ins>97.43</ins></td></tr>
+<tr class="our-model"><th scope="row"><strong>◆ BioLoom (DFN-2B)</strong></th><td data-label="Concise I2T R@1" align="right"><strong>66.81</strong></td><td data-label="Concise I2T R@10" align="right"><strong>92.81</strong></td><td data-label="Concise I2T R@100" align="right"><strong>99.28</strong></td><td data-label="Concise T2I R@1" align="right"><strong>59.59</strong></td><td data-label="Concise T2I R@10" align="right"><strong>88.81</strong></td><td data-label="Concise T2I R@100" align="right"><strong>98.77</strong></td><td data-label="Original I2T R@1" align="right"><strong>79.29</strong></td><td data-label="Original I2T R@10" align="right"><strong>94.57</strong></td><td data-label="Original I2T R@100" align="right"><strong>98.39</strong></td><td data-label="Original T2I R@1" align="right"><strong>78.34</strong></td><td data-label="Original T2I R@10" align="right"><strong>94.10</strong></td><td data-label="Original T2I R@100" align="right"><strong>98.41</strong></td></tr>
+</tbody>
+</table></div>
+
+<div class="result-block" id="flickr-results"><h3>BioMedFlickr retrieval</h3><p>Recall at 1, 10, and 100 (%). The original exact-pair protocol counts only the paired row as relevant. Our protocol counts any row with the same caption text as relevant in both retrieval directions.</p><table class="paper-results-table biomedflickr-table" aria-label="BioMedFlickr retrieval">
+<thead>
+<tr><th scope="col" rowspan="2">Model</th><th scope="colgroup" colspan="3">Image to text</th><th scope="colgroup" colspan="3">Text to image</th></tr>
+<tr><th scope="col">R@1</th><th scope="col">R@10</th><th scope="col">R@100</th><th scope="col">R@1</th><th scope="col">R@10</th><th scope="col">R@100</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">CoCa<sup>*</sup></th><td data-label="I2T R@1" align="right">1.64</td><td data-label="I2T R@10" align="right">5.58</td><td data-label="I2T R@100" align="right">15.30</td><td data-label="T2I R@1" align="right">2.06</td><td data-label="T2I R@10" align="right">7.95</td><td data-label="T2I R@100" align="right">23.98</td></tr>
+<tr><th scope="row">OpenCLIP<sup>*</sup></th><td data-label="I2T R@1" align="right">2.41</td><td data-label="I2T R@10" align="right">8.48</td><td data-label="I2T R@100" align="right">23.42</td><td data-label="T2I R@1" align="right">3.13</td><td data-label="T2I R@10" align="right">11.36</td><td data-label="T2I R@100" align="right">34.25</td></tr>
+<tr><th scope="row">PMC-CLIP<sup>*</sup></th><td data-label="I2T R@1" align="right">2.03</td><td data-label="I2T R@10" align="right">8.38</td><td data-label="I2T R@100" align="right">25.61</td><td data-label="T2I R@1" align="right">2.67</td><td data-label="T2I R@10" align="right">11.75</td><td data-label="T2I R@100" align="right">34.38</td></tr>
+<tr><th scope="row">MedSigLIP</th><td data-label="I2T R@1" align="right">3.56</td><td data-label="I2T R@10" align="right">10.83</td><td data-label="I2T R@100" align="right">31.45</td><td data-label="T2I R@1" align="right">4.62</td><td data-label="T2I R@10" align="right">15.18</td><td data-label="T2I R@100" align="right">38.78</td></tr>
+<tr><th scope="row">BiomedCLIP</th><td data-label="I2T R@1" align="right">4.76</td><td data-label="I2T R@10" align="right">14.04</td><td data-label="I2T R@100" align="right">35.46</td><td data-label="T2I R@1" align="right">4.68</td><td data-label="T2I R@10" align="right">19.05</td><td data-label="T2I R@100" align="right">50.45</td></tr>
+<tr><th scope="row">Panel2Patch</th><td data-label="I2T R@1" align="right">3.60</td><td data-label="I2T R@10" align="right">12.40</td><td data-label="I2T R@100" align="right">33.00</td><td data-label="T2I R@1" align="right">7.00</td><td data-label="T2I R@10" align="right">19.82</td><td data-label="T2I R@100" align="right">46.93</td></tr>
+<tr><th scope="row">BMC-LongCLIP</th><td data-label="I2T R@1" align="right">5.00</td><td data-label="I2T R@10" align="right">15.57</td><td data-label="I2T R@100" align="right">37.52</td><td data-label="T2I R@1" align="right">6.67</td><td data-label="T2I R@10" align="right">20.97</td><td data-label="T2I R@100" align="right">52.32</td></tr>
+<tr><th scope="row">BMC-CLIP-CF</th><td data-label="I2T R@1" align="right">4.86</td><td data-label="I2T R@10" align="right">14.18</td><td data-label="I2T R@100" align="right">35.81</td><td data-label="T2I R@1" align="right">6.99</td><td data-label="T2I R@10" align="right">22.95</td><td data-label="T2I R@100" align="right">50.47</td></tr>
+<tr><th scope="row">MedPMC-CLIP</th><td data-label="I2T R@1" align="right">5.94</td><td data-label="I2T R@10" align="right">19.94</td><td data-label="I2T R@100" align="right">45.26</td><td data-label="T2I R@1" align="right"><ins>9.16</ins></td><td data-label="T2I R@10" align="right"><ins>31.61</ins></td><td data-label="T2I R@100" align="right"><ins>61.38</ins></td></tr>
+<tr class="our-model"><th scope="row"><strong>◆ BioLoom (Scratch)<sup>*</sup></strong></th><td data-label="I2T R@1" align="right"><ins>8.00</ins></td><td data-label="I2T R@10" align="right"><ins>21.85</ins></td><td data-label="I2T R@100" align="right"><ins>45.66</ins></td><td data-label="T2I R@1" align="right">8.84</td><td data-label="T2I R@10" align="right">27.63</td><td data-label="T2I R@100" align="right">58.75</td></tr>
+<tr class="our-model"><th scope="row"><strong>◆ BioLoom (DFN-2B)</strong></th><td data-label="I2T R@1" align="right"><strong>9.73</strong></td><td data-label="I2T R@10" align="right"><strong>25.58</strong></td><td data-label="I2T R@100" align="right"><strong>49.46</strong></td><td data-label="T2I R@1" align="right"><strong>11.45</strong></td><td data-label="T2I R@10" align="right"><strong>31.90</strong></td><td data-label="T2I R@100" align="right"><strong>63.51</strong></td></tr>
+</tbody>
+</table></div></div>
+
+</section>
+
+<section class="section experiment-section" id="experiments" aria-labelledby="experiments-title">
+  <div class="section-heading"><h2 id="experiments-title">Scaling and transfer</h2></div>
+  <div class="experiment-explorer">
+    <div class="step-buttons" role="group" aria-label="Choose an experiment">
+      <button type="button" data-experiment="probe" aria-pressed="true" aria-controls="experiment-view">Linear probing</button>
+      <button type="button" data-experiment="size" aria-pressed="false" aria-controls="experiment-view">Model size</button>
+      <button type="button" data-experiment="scale" aria-pressed="false" aria-controls="experiment-view">Data scale</button>
+      <button type="button" data-experiment="epochs" aria-pressed="false" aria-controls="experiment-view">Training epochs</button>
+    </div>
+    <div id="experiment-view"></div>
+  </div>
+</section>
+
+<section class="section citation" id="citation">
+  <div class="section-heading"><h2>BibTeX</h2><button class="button" type="button" data-copy>Copy BibTeX</button></div>
+  <pre id="bibtex"><code>@misc{yang2026bioloom,
+  title         = {BioLoom: Scaling Biomedical Vision-Language Models by Learning from the Structure of Scientific Articles},
+  author        = {Yang, Yuwei and Sun, Xiaoxiao and Lozano, Alejandro and Ting, Yuan-Sen and Yuan, Yuhui and Zheng, Liang and Yeung-Levy, Serena},
+  year          = {2026},
+  eprint        = {2611.33151},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2611.33151}
+}</code></pre>
+</section>
+</main>
+<footer>
+  <!--
+  <p class="footer-acknowledgment">Work done as a visiting PhD student on site with <a href="https://marvl.stanford.edu/">MARVL</a> at Stanford University. Thanks to Serena Yeung-Levy and the lab members for their hospitality and helpful discussions!</p>
+  -->
+</footer>
+
+</body>
+</html>

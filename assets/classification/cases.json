@@ -1,0 +1,1520 @@
+[
+  {
+    "domain": "Cellular phenotyping",
+    "dataset": "Coos7",
+    "task": "coos7_test4",
+    "sampleIndex": 30749,
+    "sampleId": "test4/30749",
+    "image": "assets/classification/case-01.webp",
+    "poolImages": [
+      "assets/classification/pool/case-01-1.webp",
+      "assets/classification/pool/case-01-2.webp",
+      "assets/classification/pool/case-01-3.webp",
+      "assets/classification/pool/case-01-4.webp",
+      "assets/classification/pool/case-01-5.webp"
+    ],
+    "nativeWidth": 64,
+    "nativeHeight": 64,
+    "groundTruth": "Peroxisomes",
+    "candidateCount": 7,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Peroxisomes",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Early Endosomes",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Early Endosomes",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Golgi Apparatus",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Nuclear Envelope",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Inner Mitochondrial Membrane",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Cellular phenotyping",
+    "dataset": "Coos7",
+    "task": "coos7_test3",
+    "sampleIndex": 32557,
+    "sampleId": "test3/32557",
+    "image": "assets/classification/case-02.webp",
+    "poolImages": [
+      "assets/classification/pool/case-02-1.webp",
+      "assets/classification/pool/case-02-2.webp",
+      "assets/classification/pool/case-02-3.webp",
+      "assets/classification/pool/case-02-4.webp",
+      "assets/classification/pool/case-02-5.webp"
+    ],
+    "nativeWidth": 64,
+    "nativeHeight": 64,
+    "groundTruth": "Inner Mitochondrial Membrane",
+    "candidateCount": 7,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Inner Mitochondrial Membrane",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Nuclear Envelope",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Early Endosomes",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Peroxisomes",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Endoplasmic Reticulum",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Peroxisomes",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Cellular phenotyping",
+    "dataset": "Coos7",
+    "task": "coos7_test2",
+    "sampleIndex": 16972,
+    "sampleId": "test2/16972",
+    "image": "assets/classification/case-03.webp",
+    "poolImages": [
+      "assets/classification/pool/case-03-1.webp",
+      "assets/classification/pool/case-03-2.webp",
+      "assets/classification/pool/case-03-3.webp",
+      "assets/classification/pool/case-03-4.webp",
+      "assets/classification/pool/case-03-5.webp"
+    ],
+    "nativeWidth": 64,
+    "nativeHeight": 64,
+    "groundTruth": "Golgi Apparatus",
+    "candidateCount": 7,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Golgi Apparatus",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Nuclear Envelope",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Cytosol",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Peroxisomes",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Nuclear Envelope",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Peroxisomes",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Cytology",
+    "dataset": "Cytodata",
+    "task": "cytodata",
+    "sampleIndex": 998,
+    "sampleId": "test/platelet/e76e343d-dba7-4fb2-af4b-f4dedc25eb99.jpg",
+    "image": "assets/classification/case-04.webp",
+    "poolImages": [
+      "assets/classification/pool/case-04-1.webp",
+      "assets/classification/pool/case-04-2.webp",
+      "assets/classification/pool/case-04-3.webp",
+      "assets/classification/pool/case-04-4.webp",
+      "assets/classification/pool/case-04-5.webp"
+    ],
+    "nativeWidth": 360,
+    "nativeHeight": 364,
+    "groundTruth": "Platelet",
+    "candidateCount": 10,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Platelet",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Blast",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Neutrophil",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Neutrophil",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Basophil",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Basophil",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Cytology",
+    "dataset": "Ku Optofil",
+    "task": "ku_optofil",
+    "sampleIndex": 5764,
+    "sampleId": "1604394691_138.jpg",
+    "image": "assets/classification/case-05.webp",
+    "poolImages": [
+      "assets/classification/pool/case-05-1.webp",
+      "assets/classification/pool/case-05-2.webp",
+      "assets/classification/pool/case-05-3.webp",
+      "assets/classification/pool/case-05-4.webp",
+      "assets/classification/pool/case-05-5.webp"
+    ],
+    "nativeWidth": 368,
+    "nativeHeight": 368,
+    "groundTruth": "Segmented Neutrophil",
+    "candidateCount": 13,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Segmented Neutrophil",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Eosinophil",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Myelocyte",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Basophil",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Basophil",
+        "correct": false
+      },
+      {
+        "model": "CoCa",
+        "prediction": "Platelet Cluster",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Cytology",
+    "dataset": "Raabin Wbc",
+    "task": "raabin_wbc",
+    "sampleIndex": 4326,
+    "sampleId": "TestA/Neutrophil/95-9-3-5_54_2.jpg",
+    "image": "assets/classification/case-06.webp",
+    "poolImages": [
+      "assets/classification/pool/case-06-1.webp",
+      "assets/classification/pool/case-06-2.webp",
+      "assets/classification/pool/case-06-3.webp",
+      "assets/classification/pool/case-06-4.webp",
+      "assets/classification/pool/case-06-5.webp"
+    ],
+    "nativeWidth": 575,
+    "nativeHeight": 575,
+    "groundTruth": "Neutrophil",
+    "candidateCount": 5,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Neutrophil",
+        "correct": true
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Monocyte",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Eosinophil",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Basophil",
+        "correct": false
+      },
+      {
+        "model": "MedSigLIP",
+        "prediction": "Monocyte",
+        "correct": false
+      },
+      {
+        "model": "PMC-CLIP",
+        "prediction": "Monocyte",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Dermatology",
+    "dataset": "Derm12345",
+    "task": "derm12345",
+    "sampleIndex": 2477,
+    "sampleId": "ISIC_8992614",
+    "image": "assets/classification/case-07.webp",
+    "poolImages": [
+      "assets/classification/pool/case-07-1.webp",
+      "assets/classification/pool/case-07-2.webp",
+      "assets/classification/pool/case-07-3.webp",
+      "assets/classification/pool/case-07-4.webp",
+      "assets/classification/pool/case-07-5.webp"
+    ],
+    "nativeWidth": 4032,
+    "nativeHeight": 3024,
+    "groundTruth": "Lentigo",
+    "candidateCount": 9,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Lentigo",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Dermal",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Compound",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Dermal",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Recurrent",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Dermal",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Dermatology",
+    "dataset": "Derm12345",
+    "task": "derm12345",
+    "sampleIndex": 2460,
+    "sampleId": "ISIC_8045608",
+    "image": "assets/classification/case-08.webp",
+    "poolImages": [
+      "assets/classification/pool/case-08-1.webp",
+      "assets/classification/pool/case-08-2.webp",
+      "assets/classification/pool/case-08-3.webp",
+      "assets/classification/pool/case-08-4.webp",
+      "assets/classification/pool/case-08-5.webp"
+    ],
+    "nativeWidth": 3264,
+    "nativeHeight": 2448,
+    "groundTruth": "Keratinocytic",
+    "candidateCount": 9,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Keratinocytic",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Dermal",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Lentigo",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Junctional",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Melanoma",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Melanoma",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Dermatology",
+    "dataset": "Derm12345",
+    "task": "derm12345",
+    "sampleIndex": 2259,
+    "sampleId": "ISIC_5496399",
+    "image": "assets/classification/case-09.webp",
+    "poolImages": [
+      "assets/classification/pool/case-09-1.webp",
+      "assets/classification/pool/case-09-2.webp",
+      "assets/classification/pool/case-09-3.webp",
+      "assets/classification/pool/case-09-4.webp",
+      "assets/classification/pool/case-09-5.webp"
+    ],
+    "nativeWidth": 768,
+    "nativeHeight": 797,
+    "groundTruth": "Melanoma",
+    "candidateCount": 9,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Melanoma",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Dermal",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Compound",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Junctional",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Lentigo",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Lentigo",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Microbial and parasitic recognition",
+    "dataset": "Bacteria2026",
+    "task": "bacteria_morphology",
+    "sampleIndex": 292,
+    "sampleId": "337.png",
+    "image": "assets/classification/case-10.webp",
+    "poolImages": [
+      "assets/classification/pool/case-10-1.webp",
+      "assets/classification/pool/case-10-2.webp",
+      "assets/classification/pool/case-10-3.webp",
+      "assets/classification/pool/case-10-4.webp",
+      "assets/classification/pool/case-10-5.webp"
+    ],
+    "nativeWidth": 1225,
+    "nativeHeight": 1225,
+    "groundTruth": "Coccus",
+    "candidateCount": 6,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Coccus",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Coccobacillus",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Streptococci",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Staphylococci",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Streptococci",
+        "correct": false
+      },
+      {
+        "model": "MedSigLIP",
+        "prediction": "Streptococci",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Microbial and parasitic recognition",
+    "dataset": "Bacteria2026",
+    "task": "bacteria_gram",
+    "sampleIndex": 254,
+    "sampleId": "1340.png",
+    "image": "assets/classification/case-11.webp",
+    "poolImages": [
+      "assets/classification/pool/case-11-1.webp",
+      "assets/classification/pool/case-11-2.webp",
+      "assets/classification/pool/case-11-3.webp",
+      "assets/classification/pool/case-11-4.webp",
+      "assets/classification/pool/case-11-5.webp"
+    ],
+    "nativeWidth": 1225,
+    "nativeHeight": 1225,
+    "groundTruth": "Gram Positive Bacteria",
+    "candidateCount": 2,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Gram Positive Bacteria",
+        "correct": true
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Gram Negative Bacteria",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Gram Negative Bacteria",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Gram Negative Bacteria",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Gram Negative Bacteria",
+        "correct": false
+      },
+      {
+        "model": "CoCa",
+        "prediction": "Gram Negative Bacteria",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Microbial and parasitic recognition",
+    "dataset": "Bacteria2026",
+    "task": "bacteria_morphology",
+    "sampleIndex": 286,
+    "sampleId": "508.png",
+    "image": "assets/classification/case-12.webp",
+    "poolImages": [
+      "assets/classification/pool/case-12-1.webp",
+      "assets/classification/pool/case-12-2.webp",
+      "assets/classification/pool/case-12-3.webp",
+      "assets/classification/pool/case-12-4.webp",
+      "assets/classification/pool/case-12-5.webp"
+    ],
+    "nativeWidth": 1225,
+    "nativeHeight": 1225,
+    "groundTruth": "Bacillus",
+    "candidateCount": 6,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Bacillus",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Streptobacilli",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Streptobacilli",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Coccobacillus",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Coccobacillus",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Coccobacillus",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Microscopy composition",
+    "dataset": "Omnipose",
+    "task": "omnipose_modality",
+    "sampleIndex": 154,
+    "sampleId": "bact_fluor/bthai/bthai_f_t010xy3_tile4_cyto.tif",
+    "image": "assets/classification/case-13.webp",
+    "poolImages": [
+      "assets/classification/pool/case-13-1.webp",
+      "assets/classification/pool/case-13-2.webp",
+      "assets/classification/pool/case-13-3.webp",
+      "assets/classification/pool/case-13-4.webp",
+      "assets/classification/pool/case-13-5.webp"
+    ],
+    "nativeWidth": 1034,
+    "nativeHeight": 1031,
+    "groundTruth": "Fluorescence",
+    "candidateCount": 2,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Fluorescence",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Phase Contrast",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Phase Contrast",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Phase Contrast",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Phase Contrast",
+        "correct": false
+      },
+      {
+        "model": "CoCa",
+        "prediction": "Phase Contrast",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Microscopy composition",
+    "dataset": "Omnipose",
+    "task": "omnipose_modality",
+    "sampleIndex": 191,
+    "sampleId": "bact_fluor/wiggins/wiggins_ensemble_fluor_43.tif",
+    "image": "assets/classification/case-14.webp",
+    "poolImages": [
+      "assets/classification/pool/case-14-1.webp",
+      "assets/classification/pool/case-14-2.webp",
+      "assets/classification/pool/case-14-3.webp",
+      "assets/classification/pool/case-14-4.webp",
+      "assets/classification/pool/case-14-5.webp"
+    ],
+    "nativeWidth": 328,
+    "nativeHeight": 332,
+    "groundTruth": "Fluorescence",
+    "candidateCount": 2,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Fluorescence",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Phase Contrast",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Phase Contrast",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Phase Contrast",
+        "correct": false
+      },
+      {
+        "model": "CoCa",
+        "prediction": "Phase Contrast",
+        "correct": false
+      },
+      {
+        "model": "PMC-CLIP",
+        "prediction": "Phase Contrast",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Microscopy composition",
+    "dataset": "Omnipose",
+    "task": "omnipose_modality",
+    "sampleIndex": 212,
+    "sampleId": "bact_fluor/wiggins/wiggins_ensemble_fluor_81.tif",
+    "image": "assets/classification/case-15.webp",
+    "poolImages": [
+      "assets/classification/pool/case-15-1.webp",
+      "assets/classification/pool/case-15-2.webp",
+      "assets/classification/pool/case-15-3.webp",
+      "assets/classification/pool/case-15-4.webp",
+      "assets/classification/pool/case-15-5.webp"
+    ],
+    "nativeWidth": 328,
+    "nativeHeight": 333,
+    "groundTruth": "Fluorescence",
+    "candidateCount": 2,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Fluorescence",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Phase Contrast",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Phase Contrast",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Phase Contrast",
+        "correct": false
+      },
+      {
+        "model": "CoCa",
+        "prediction": "Phase Contrast",
+        "correct": false
+      },
+      {
+        "model": "PMC-CLIP",
+        "prediction": "Phase Contrast",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Ophthalmology",
+    "dataset": "Rfmid",
+    "task": "rfmid",
+    "sampleIndex": 633,
+    "sampleId": "test-00003-of-00004.parquet/153",
+    "image": "assets/classification/case-16.webp",
+    "poolImages": [
+      "assets/classification/pool/case-16-1.webp",
+      "assets/classification/pool/case-16-2.webp",
+      "assets/classification/pool/case-16-3.webp",
+      "assets/classification/pool/case-16-4.webp",
+      "assets/classification/pool/case-16-5.webp"
+    ],
+    "nativeWidth": 4288,
+    "nativeHeight": 2848,
+    "groundTruth": "Abnormal Retina With Disease",
+    "candidateCount": 2,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Abnormal Retina With Disease",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Normal Retina",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Normal Retina",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Normal Retina",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Normal Retina",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Normal Retina",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Ophthalmology",
+    "dataset": "Papila",
+    "task": "papila",
+    "sampleIndex": 487,
+    "sampleId": "RET293OS.jpg",
+    "image": "assets/classification/case-17.webp",
+    "poolImages": [
+      "assets/classification/pool/case-17-1.webp",
+      "assets/classification/pool/case-17-2.webp",
+      "assets/classification/pool/case-17-3.webp",
+      "assets/classification/pool/case-17-4.webp",
+      "assets/classification/pool/case-17-5.webp"
+    ],
+    "nativeWidth": 2576,
+    "nativeHeight": 1934,
+    "groundTruth": "Healthy",
+    "candidateCount": 3,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Healthy",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Suspicious",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Glaucoma",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Suspicious",
+        "correct": false
+      },
+      {
+        "model": "MedSigLIP",
+        "prediction": "Suspicious",
+        "correct": false
+      },
+      {
+        "model": "PMC-CLIP",
+        "prediction": "Glaucoma",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Ophthalmology",
+    "dataset": "Rfmid",
+    "task": "rfmid",
+    "sampleIndex": 611,
+    "sampleId": "test-00003-of-00004.parquet/131",
+    "image": "assets/classification/case-18.webp",
+    "poolImages": [
+      "assets/classification/pool/case-18-1.webp",
+      "assets/classification/pool/case-18-2.webp",
+      "assets/classification/pool/case-18-3.webp",
+      "assets/classification/pool/case-18-4.webp",
+      "assets/classification/pool/case-18-5.webp"
+    ],
+    "nativeWidth": 4288,
+    "nativeHeight": 2848,
+    "groundTruth": "Abnormal Retina With Disease",
+    "candidateCount": 2,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Abnormal Retina With Disease",
+        "correct": true
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Normal Retina",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Normal Retina",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Normal Retina",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Normal Retina",
+        "correct": false
+      },
+      {
+        "model": "PMC-CLIP",
+        "prediction": "Normal Retina",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Radiology",
+    "dataset": "Organmnist 2D",
+    "task": "organsmnist",
+    "sampleIndex": 8814,
+    "sampleId": "organsmnist/test/8814",
+    "image": "assets/classification/case-19.webp",
+    "poolImages": [
+      "assets/classification/pool/case-19-1.webp",
+      "assets/classification/pool/case-19-2.webp",
+      "assets/classification/pool/case-19-3.webp",
+      "assets/classification/pool/case-19-4.webp",
+      "assets/classification/pool/case-19-5.webp"
+    ],
+    "nativeWidth": 28,
+    "nativeHeight": 28,
+    "groundTruth": "Spleen",
+    "candidateCount": 11,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Spleen",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Lung Right",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Pancreas",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Pancreas",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Liver",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Kidney Left",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Radiology",
+    "dataset": "Organmnist 2D",
+    "task": "organcmnist",
+    "sampleIndex": 8205,
+    "sampleId": "organcmnist/test/8205",
+    "image": "assets/classification/case-20.webp",
+    "poolImages": [
+      "assets/classification/pool/case-20-1.webp",
+      "assets/classification/pool/case-20-2.webp",
+      "assets/classification/pool/case-20-3.webp",
+      "assets/classification/pool/case-20-4.webp",
+      "assets/classification/pool/case-20-5.webp"
+    ],
+    "nativeWidth": 28,
+    "nativeHeight": 28,
+    "groundTruth": "Pancreas",
+    "candidateCount": 11,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Pancreas",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Kidney Right",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Femur Left",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Kidney Right",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Heart",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Kidney Left",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Radiology",
+    "dataset": "Organmnist 2D",
+    "task": "organamnist",
+    "sampleIndex": 17759,
+    "sampleId": "organamnist/test/17759",
+    "image": "assets/classification/case-21.webp",
+    "poolImages": [
+      "assets/classification/pool/case-21-1.webp",
+      "assets/classification/pool/case-21-2.webp",
+      "assets/classification/pool/case-21-3.webp",
+      "assets/classification/pool/case-21-4.webp",
+      "assets/classification/pool/case-21-5.webp"
+    ],
+    "nativeWidth": 28,
+    "nativeHeight": 28,
+    "groundTruth": "Lung Left",
+    "candidateCount": 11,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Lung Left",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Liver",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Heart",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Kidney Right",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Heart",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Heart",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Surgery and anatomy",
+    "dataset": "Hyperkvasir",
+    "task": "hyperkvasir",
+    "sampleIndex": 10637,
+    "sampleId": "9dbebd33-1b76-429a-a249-aef8a2eb060a.jpg",
+    "image": "assets/classification/case-22.webp",
+    "poolImages": [
+      "assets/classification/pool/case-22-1.webp",
+      "assets/classification/pool/case-22-2.webp",
+      "assets/classification/pool/case-22-3.webp",
+      "assets/classification/pool/case-22-4.webp",
+      "assets/classification/pool/case-22-5.webp"
+    ],
+    "nativeWidth": 635,
+    "nativeHeight": 547,
+    "groundTruth": "Ulcerative Colitis Grade 1",
+    "candidateCount": 23,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Ulcerative Colitis Grade 1",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Ulcerative Colitis Grade 0 1",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Ulcerative Colitis Grade 3",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Ulcerative Colitis Grade 3",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Ulcerative Colitis Grade 0 1",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Ulcerative Colitis Grade 0 1",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Surgery and anatomy",
+    "dataset": "Gastrovision",
+    "task": "gastrovision",
+    "sampleIndex": 1570,
+    "sampleId": "0e89726e-b5b2-4ca2-acdf-51856602dad4.jpg",
+    "image": "assets/classification/case-23.webp",
+    "poolImages": [
+      "assets/classification/pool/case-23-1.webp",
+      "assets/classification/pool/case-23-2.webp",
+      "assets/classification/pool/case-23-3.webp",
+      "assets/classification/pool/case-23-4.webp",
+      "assets/classification/pool/case-23-5.webp"
+    ],
+    "nativeWidth": 1280,
+    "nativeHeight": 1024,
+    "groundTruth": "Duodenal Bulb",
+    "candidateCount": 22,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Duodenal Bulb",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Normal Stomach",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Normal Stomach",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Pylorus",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Normal Mucosa And Vascular Pattern In The Large Bowel",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Normal Esophagus",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Surgery and anatomy",
+    "dataset": "Hyperkvasir",
+    "task": "hyperkvasir",
+    "sampleIndex": 10438,
+    "sampleId": "bf6baa0c-1f4a-4031-a08d-e87ea0781631.jpg",
+    "image": "assets/classification/case-24.webp",
+    "poolImages": [
+      "assets/classification/pool/case-24-1.webp",
+      "assets/classification/pool/case-24-2.webp",
+      "assets/classification/pool/case-24-3.webp",
+      "assets/classification/pool/case-24-4.webp",
+      "assets/classification/pool/case-24-5.webp"
+    ],
+    "nativeWidth": 633,
+    "nativeHeight": 532,
+    "groundTruth": "Retroflex Rectum",
+    "candidateCount": 23,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Retroflex Rectum",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Retroflex Stomach",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Normal Pylorus",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Retroflex Stomach",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Retroflex Stomach",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Short Segment Barretts",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "domain": "Histopathology",
+    "dataset": "Kather et al. 2016",
+    "task": "kather_et_al_2016",
+    "sampleIndex": 10,
+    "sampleId": "a93b5214-3a48-4265-9f6b-41692c1743ac",
+    "image": "assets/classification/case-25.webp",
+    "groundTruth": "Debris And Mucus",
+    "candidateCount": 6,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Debris And Mucus",
+        "correct": true
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Simple Stroma",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Simple Stroma",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Simple Stroma",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Simple Stroma",
+        "correct": false
+      },
+      {
+        "model": "CoCa",
+        "prediction": "Adipose Tissue",
+        "correct": false
+      }
+    ],
+    "poolImages": [
+      "assets/classification/pool/case-25-1.webp",
+      "assets/classification/pool/case-25-2.webp",
+      "assets/classification/pool/case-25-3.webp",
+      "assets/classification/pool/case-25-4.webp",
+      "assets/classification/pool/case-25-5.webp"
+    ]
+  },
+  {
+    "domain": "Histopathology",
+    "dataset": "Kather et al. 2016",
+    "task": "kather_et_al_2016",
+    "sampleIndex": 17,
+    "sampleId": "eb0c7b85-aa06-4778-ad4b-81b41fd16463",
+    "image": "assets/classification/case-26.webp",
+    "groundTruth": "Mucosal Glands",
+    "candidateCount": 6,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Mucosal Glands",
+        "correct": true
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Simple Stroma",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Adipose Tissue",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Background",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Adipose Tissue",
+        "correct": false
+      },
+      {
+        "model": "CoCa",
+        "prediction": "Adipose Tissue",
+        "correct": false
+      }
+    ],
+    "poolImages": [
+      "assets/classification/pool/case-26-1.webp",
+      "assets/classification/pool/case-26-2.webp",
+      "assets/classification/pool/case-26-3.webp",
+      "assets/classification/pool/case-26-4.webp",
+      "assets/classification/pool/case-26-5.webp"
+    ]
+  },
+  {
+    "domain": "Histopathology",
+    "dataset": "Kather et al. 2016",
+    "task": "kather_et_al_2016",
+    "sampleIndex": 23,
+    "sampleId": "7b6539ee-1441-4126-a85b-70e1dbb73c3d",
+    "image": "assets/classification/case-27.webp",
+    "groundTruth": "Background",
+    "candidateCount": 6,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Background",
+        "correct": true
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "None Of The Above",
+        "correct": false
+      },
+      {
+        "model": "BMC-LongCLIP",
+        "prediction": "Immune Cells",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "None Of The Above",
+        "correct": false
+      },
+      {
+        "model": "CoCa",
+        "prediction": "Adipose Tissue",
+        "correct": false
+      },
+      {
+        "model": "MedSigLIP",
+        "prediction": "None Of The Above",
+        "correct": false
+      }
+    ],
+    "poolImages": [
+      "assets/classification/pool/case-27-1.webp",
+      "assets/classification/pool/case-27-2.webp",
+      "assets/classification/pool/case-27-3.webp",
+      "assets/classification/pool/case-27-4.webp",
+      "assets/classification/pool/case-27-5.webp"
+    ]
+  },
+  {
+    "domain": "Structure profiling",
+    "dataset": "EMPIAR SBF-SEM",
+    "task": "empiar_sbfsem",
+    "sampleIndex": 7,
+    "sampleId": "03773fc0-7814-40f6-91dc-0713ab9cb8bc",
+    "image": "assets/classification/case-28.webp",
+    "groundTruth": "Leishmania Haptomonad",
+    "candidateCount": 6,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Leishmania Haptomonad",
+        "correct": true
+      },
+      {
+        "model": "MedPMC-CLIP",
+        "prediction": "Tobacco Leaf Chloroplast",
+        "correct": false
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Hela Cell In Metaphase",
+        "correct": false
+      },
+      {
+        "model": "CoCa",
+        "prediction": "Hela Cell In Metaphase",
+        "correct": false
+      },
+      {
+        "model": "MedSigLIP",
+        "prediction": "Cardiac Muscle",
+        "correct": false
+      },
+      {
+        "model": "PMC-CLIP",
+        "prediction": "Tobacco Leaf Chloroplast",
+        "correct": false
+      }
+    ],
+    "poolImages": [
+      "assets/classification/pool/case-28-1.webp",
+      "assets/classification/pool/case-28-2.webp",
+      "assets/classification/pool/case-28-3.webp",
+      "assets/classification/pool/case-28-4.webp",
+      "assets/classification/pool/case-28-5.webp"
+    ]
+  },
+  {
+    "domain": "Structure profiling",
+    "dataset": "EMPIAR SBF-SEM",
+    "task": "empiar_sbfsem",
+    "sampleIndex": 17,
+    "sampleId": "df7423c9-0433-4cd5-8d56-6e6bde71d5bd",
+    "image": "assets/classification/case-29.webp",
+    "groundTruth": "Zebrafish Retina",
+    "candidateCount": 6,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Zebrafish Retina",
+        "correct": true
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Cardiac Muscle",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Cardiac Muscle",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Hela Cell In Metaphase",
+        "correct": false
+      },
+      {
+        "model": "CoCa",
+        "prediction": "Tobacco Leaf Chloroplast",
+        "correct": false
+      },
+      {
+        "model": "MedSigLIP",
+        "prediction": "Cardiac Muscle",
+        "correct": false
+      }
+    ],
+    "poolImages": [
+      "assets/classification/pool/case-29-1.webp",
+      "assets/classification/pool/case-29-2.webp",
+      "assets/classification/pool/case-29-3.webp",
+      "assets/classification/pool/case-29-4.webp",
+      "assets/classification/pool/case-29-5.webp"
+    ]
+  },
+  {
+    "domain": "Structure profiling",
+    "dataset": "EMPIAR SBF-SEM",
+    "task": "empiar_sbfsem",
+    "sampleIndex": 20,
+    "sampleId": "a8e4baa9-ee09-4d37-a135-e6b8ccf08c62",
+    "image": "assets/classification/case-30.webp",
+    "groundTruth": "Zebrafish Retina",
+    "candidateCount": 6,
+    "predictions": [
+      {
+        "model": "BioLoom",
+        "prediction": "Zebrafish Retina",
+        "correct": true
+      },
+      {
+        "model": "BiomedCLIP",
+        "prediction": "Cardiac Muscle",
+        "correct": false
+      },
+      {
+        "model": "BMC-CLIP-CF",
+        "prediction": "Cardiac Muscle",
+        "correct": false
+      },
+      {
+        "model": "OpenCLIP",
+        "prediction": "Hela Cell In Metaphase",
+        "correct": false
+      },
+      {
+        "model": "CoCa",
+        "prediction": "Cardiac Muscle",
+        "correct": false
+      },
+      {
+        "model": "MedSigLIP",
+        "prediction": "Cardiac Muscle",
+        "correct": false
+      }
+    ],
+    "poolImages": [
+      "assets/classification/pool/case-30-1.webp",
+      "assets/classification/pool/case-30-2.webp",
+      "assets/classification/pool/case-30-3.webp",
+      "assets/classification/pool/case-30-4.webp",
+      "assets/classification/pool/case-30-5.webp"
+    ]
+  }
+]
